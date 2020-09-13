@@ -1,7 +1,9 @@
 # 蓝桥刷题
 
-原文链接：
-https://blog.csdn.net/qq_31910669/article/details/103641497
+>  <font color=#CC0066 size=5> 原文链接：
+>  [https://github.com/libo-sober/LanQiaoCup](https://github.com/libo-sober/LanQiaoCup)
+>  [Python解答蓝桥杯省赛真题之从入门到真题](https://blog.csdn.net/qq_31910669/article/details/103641497)
+
 
 1. 不同字串
 
@@ -512,7 +514,7 @@ https://blog.csdn.net/qq_31910669/article/details/103641497
         # print(gcd(20, 35))  # 5
     ```
 
-10. 购物单
+11. 购物单
 
     ```python
     """
@@ -654,19 +656,7 @@ https://blog.csdn.net/qq_31910669/article/details/103641497
     """
     ```
 
-11. 
-
 12. 
 
 13. 
-
-
-
-
-
-
-
-
-
-
 
