@@ -46,3 +46,26 @@ def get_len():
 if __name__ == '__main__':
     print(get_len())
 
+"""
+注释：
+1. sorted 排序
+l1 = [22, 33, 1, 2, 7, 4]
+l2 = sorted(l1)
+# print(l1)  # [22, 33, 1, 2, 7, 4]  不会改变原来的数组内容
+# print(l2)   # [1, 2, 4, 7, 22, 33]
+l2 = [('太白',18), ('alex', 73), ('wusir', 35), ('口天吴', 41)]
+print(sorted(l2))  # [('alex', 73), ('wusir', 35), ('口天吴', 41), ('太白', 18)]
+print(sorted(l2, key=lambda x:x[1]))  # 返回的是一个列表  [('太白', 18), ('wusir', 35), ('口天吴', 41), ('alex', 73)]
+print(sorted(l2, key=lambda x:x[1], reverse=True))  # 从大到小
+
+
+2. 列表的sort()方法排序
+l1.sort()
+print(l1)  # [1, 2, 4, 7, 22, 33] 返回值为None 把原来的列表元素从小到大排序，改变原列表内容
+l2 = [('太白',18), ('alex', 73), ('wusir', 35), ('口天吴', 41)]
+l2.sort(key=lambda x: x[1])
+# print(l2)  # [('太白', 18), ('wusir', 35), ('口天吴', 41), ('alex', 73)]
+l2.sort(key=lambda x: x[1], reverse=True)
+print(l2)  # [('alex', 73), ('口天吴', 41), ('wusir', 35), ('太白', 18)]  # 从大到小
+
+"""
