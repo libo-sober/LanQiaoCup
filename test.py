@@ -52,8 +52,28 @@
 # s = '     \n太白\t'
 # # print(s)
 # print(s.strip())
-from fnmatch import fnmatchcase as match
+# from fnmatch import fnmatchcase as match
+#
+# print(match('88折', '*折'))
 
-print(match('88折', '*折'))
+# for i in range(2, 3):
+#     print(i)
+
+# a = [1, 2, 4]
+# a.insert(0,0)
+# print(a)
+# num_list = [[0] * 5 for i in range(2)]
+#
+# print(num_list)
+# num_list[0][0] = 1
+# print(num_list)
+# data_map = [[0] * 10 for _ in range(10)]
+# data_map = [[0] * 10] * 10  # 不要用这种方式定义，这样data_map[1][1] = 1 会导致每一行的第一个位置都为1
+# data_map=[]
+# for i in range(10):
+#     data_map.append([0 for i in range(10)])
+# data_map[1][0] = 1
+# print(data_map)
+
 
 

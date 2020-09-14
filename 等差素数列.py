@@ -15,20 +15,51 @@
 注意：需要提交的是一个整数，不要填写任何多余的内容和说明文字。
 """
 
-# Todo:李波
-# def is_prime(x):
-#     for i in range(3, x):
-#         if x % i == 0:
-#             return False
-#     return True
-#
-#
-# def get_dif():
-#     for i in range(1000):
-#
-#
-#
-# if __name__ == '__main__':
-#     # print(is_prime(16))
-#     print(get_dif())
+
+def init_num():
+    global tot
+    for i in range(2, N):
+        if dp[i] == 1:
+            continue
+        prim[tot] = i  # 记录N以内的所有素数
+        tot += 1
+        j = i
+        while i * j < N:
+            dp[i * j] = 1  # 不是素数的位置标记1
+            j += 1
+
+
+def get_dif():
+    global dif
+    init_num()
+
+    # print(dp[:100])
+    # print(prim[:100])
+
+    # print(tot)
+
+    while dif * 10 < N:
+        for j in range(tot):
+            flag, temp = True, prim[j]
+            for k in range(1, 10):  # temp后边是否再有9个满足等差条件的素数
+                if temp + dif >= N or dp[temp + dif] == 1:
+                    flag = False
+                    break
+                else:
+                    temp += dif
+            if flag:
+                # print(dif, prim[j])
+                return dif
+        dif += 1
+
+
+N = 1000010
+dp = [1, 1] + [0] * N
+tot = 0
+dif = 1
+prim = [0] * N
+
+if __name__ == '__main__':
+    # print(is_prime(2))
+    print(get_dif())
 

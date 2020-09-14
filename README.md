@@ -656,7 +656,326 @@
     """
     ```
 
-12. 
+12. 等差素数列
 
-13. 
+    ```python
+    """
+    难度系数：***
+    
+    2,3,5,7,11,13,…是素数序列。
+    类似：7,37,67,97,127,157 这样完全由素数组成的等差数列，叫等差素数数列。
+    上边的数列公差为30，长度为6。
+    
+    2004年，格林与华人陶哲轩合作证明了：存在任意长度的素数等差数列。
+    这是数论领域一项惊人的成果！
+    
+    有这一理论为基础，请你借助手中的计算机，满怀信心地搜索：
+    
+    长度为10的等差素数列，其公差最小值是多少？
+    
+    注意：需要提交的是一个整数，不要填写任何多余的内容和说明文字。
+    """
+    
+    
+    def init_num():
+        global tot
+        for i in range(2, N):
+            if dp[i] == 1:
+                continue
+            prim[tot] = i  # 记录N以内的所有素数
+            tot += 1
+            j = i
+            while i * j < N:
+                dp[i * j] = 1  # 不是素数的位置标记1
+                j += 1
+    
+    
+    def get_dif():
+        global dif
+        init_num()
+    
+        # print(dp[:100])
+        # print(prim[:100])
+    
+        # print(tot)
+    
+        while dif * 10 < N:
+            for j in range(tot):
+                flag, temp = True, prim[j]
+                for k in range(1, 10):  # temp后边是否再有9个满足等差条件的素数
+                    if temp + dif >= N or dp[temp + dif] == 1:
+                        flag = False
+                        break
+                    else:
+                        temp += dif
+                if flag:
+                    # print(dif, prim[j])
+                    return dif
+            dif += 1
+    
+    
+    N = 1000010
+    dp = [1, 1] + [0] * N
+    tot = 0
+    dif = 1
+    prim = [0] * N
+    
+    if __name__ == '__main__':
+        # print(is_prime(2))
+        print(get_dif())
+    ```
+
+13. 迷宫2
+
+    ```python
+    """
+    X星球的一处迷宫游乐场建在某个小山坡上。
+    它是由10x10相互连通的小房间组成的。
+    房间的地板上写着一个很大的字母。
+    我们假设玩家是面朝上坡的方向站立，则：
+    L表示走到左边的房间，
+    R表示走到右边的房间，
+    U表示走到上坡方向的房间，
+    D表示走到下坡方向的房间。
+    X星球的居民有点懒，不愿意费力思考。
+    他们更喜欢玩运气类的游戏。这个游戏也是如此！
+    开始的时候，直升机把100名玩家放入一个个小房间内。
+    玩家一定要按照地上的字母移动。
+    迷宫地图如下：
+    
+    UDDLUULRUL
+    UURLLLRRRU
+    RRUURLDLRD
+    RUDDDDUUUU
+    URUDLLRRUU
+    DURLRLDLRL
+    ULLURLLRDU
+    RDLULLRDDD
+    UUDDUDUDLL
+    ULRDLUURRR
+    
+    请你计算一下，最后，有多少玩家会走出迷宫?
+    而不是在里边兜圈子。
+    请提交该整数，表示走出迷宫的玩家数目，不要填写任何多余的内容。
+    """
+    
+    
+    def dfs(x, y):
+        """
+        深度搜索
+        :param x: 位置横坐标
+        :param y: 位置纵坐标
+        :return: None
+        """
+        global ans
+        while True:
+            """所在（x, y）位置的人按照标识走出迷宫后推出循环"""
+            # print(x, y)
+            if x > 9 or x < 0 or y > 9 or y < 0:
+                ans += 1
+                # print(ans)
+                break
+    
+            if data_map[x][y] == 1:
+                break
+            # 记录走过的位置
+            data_map[x][y] = 1
+    
+            if data[x][y] == 'U':
+                x -= 1
+    
+            elif data[x][y] == 'D':
+                x += 1
+    
+            elif data[x][y] == 'L':
+                # print(x, y)
+                y -= 1
+    
+            elif data[x][y] == 'R':
+                y += 1
+    
+    
+    def get_num():
+        """
+        获取走出迷宫的人数
+        :return: 走出迷宫的人数
+        """
+        global data_map
+        global ans
+        for i in range(0, 10):
+            for j in range(0, 10):
+                """对每个位置进行遍历，注意每次遍历开始前要先对data_map清0"""
+                # data_map = [[0] * 10] * 10  # 不要用这种方式定义，这样data_map[1][1] = 1 会导致每一行的第一个位置都为1
+                data_map = [[0] * 10 for _ in range(10)]  # 这样行
+                # print(i, j)
+                dfs(i, j)
+    
+        return ans
+    
+    
+    def get_data(file_name):
+        """
+        获取数据
+        :param file_name: 保存数据的文件
+        :return: 获取的数据
+        """
+        data = []
+        with open(file_name, mode='rt', encoding='utf-8') as f:
+            for line in f:
+                line = list(line.strip())
+                data.append(line)
+        return data
+    
+    
+    # data_map = [[0] * 10] * 10  # 不要用这种方式定义，这样data_map[1][1] = 1 会导致每一行的第一个位置都为1
+    data_map = [[0] * 10 for _ in range(10)]  # 这样行
+    # data_map = [[0 for _ in range(10)] for i in range(10)]  # 这样也行
+    # data_map = []
+    # for i in range(10):
+    #     data_map.append([0 for i in range(10)])
+    data = get_data('maze2')
+    ans = 0
+    
+    if __name__ == '__main__':
+        print(get_num())  # 31个人
+        # dfs(8, 2)
+    ```
+
+14. 承压计算
+
+    ```python
+    """
+    X星球的高科技实验室中整齐地堆放着某批珍贵金属原料。
+    
+    每块金属原料的外形、尺寸完全一致，但重量不同。
+    金属材料被严格地堆放成金字塔形。
+    
+                                 7
+                                5 8
+                               7 8 8
+                              9 2 7 2
+                             8 1 4 9 1
+                            8 1 8 8 4 1
+                           7 9 6 1 4 5 4
+                          5 6 5 5 6 9 5 6
+                         5 5 4 7 9 3 5 5 1
+                        7 5 7 9 7 4 7 3 3 1
+                       4 6 4 5 5 8 8 3 2 4 3
+                      1 1 3 3 1 6 6 5 5 4 4 2
+                     9 9 9 2 1 9 1 9 2 9 5 7 9
+                    4 3 3 7 7 9 3 6 1 3 8 8 3 7
+                   3 6 8 1 5 3 9 5 8 3 8 1 8 3 3
+                  8 3 2 3 3 5 5 8 5 4 2 8 6 7 6 9
+                 8 1 8 1 8 4 6 2 2 1 7 9 4 2 3 3 4
+                2 8 4 2 2 9 9 2 8 3 4 9 6 3 9 4 6 9
+               7 9 7 4 9 7 6 6 2 8 9 4 1 8 1 7 2 1 6
+              9 2 8 6 4 2 7 9 5 4 1 2 5 1 7 3 9 8 3 3
+             5 2 1 6 7 9 3 2 8 9 5 5 6 6 6 2 1 8 7 9 9
+            6 7 1 8 8 7 5 3 6 5 4 7 3 4 6 7 8 1 3 2 7 4
+           2 2 6 3 5 3 4 9 2 4 5 7 6 6 3 2 7 2 4 8 5 5 4
+          7 4 4 5 8 3 3 8 1 8 6 3 2 1 6 2 6 4 6 3 8 2 9 6
+         1 2 4 1 3 3 5 3 4 9 6 3 8 6 5 9 1 5 3 2 6 8 8 5 3
+        2 2 7 9 3 3 2 8 6 9 8 4 4 9 5 8 2 6 3 4 8 4 9 3 8 8
+       7 7 7 9 7 5 2 7 9 2 5 1 9 2 6 5 3 9 3 5 7 3 5 4 2 8 9
+      7 7 6 6 8 7 5 5 8 2 4 7 7 4 7 2 6 9 2 1 8 2 9 8 5 7 3 6
+     5 9 4 5 5 7 5 5 6 3 5 3 9 5 8 9 5 4 1 2 6 1 4 3 5 3 2 4 1
+    X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X
+    
+    其中的数字代表金属块的重量（计量单位较大）。
+    最下一层的X代表30台极高精度的电子秤。
+    
+    假设每块原料的重量都十分精确地平均落在下方的两个金属块上，
+    最后，所有的金属块的重量都严格精确地平分落在最底层的电子秤上。
+    电子秤的计量单位很小，所以显示的数字很大。
+    
+    工作人员发现，其中读数最小的电子秤的示数为：2086458231
+    
+    请你推算出：读数最大的电子秤的示数为多少？
+    
+    注意：需要提交的是一个整数，不要填写任何多余的内容。
+    """
+    from fnmatch import fnmatchcase as match
+    
+    
+    def get_num():
+        data = []
+        length = 0
+        with open('m', encoding='utf-8') as f:
+            for line in f:
+                if match(line, '*X*'):
+                    length = len(line.split())
+                    break
+                data.append(list(map(int, line.split())))
+        data.append([0] * length)
+        # print(data, length)
+        for i in range(1, len(data)):
+            data[i - 1].insert(0, 0)
+            data[i - 1].append(0)
+            # print(data[i - 1])
+            for j in range(len(data[i])):
+                data[i][j] += (data[i - 1][j] / 2 + data[i - 1][j + 1] / 2)
+    
+        return 2086458231 / min(data[-1]) * max(data[-1])
+    
+    
+    if __name__ == '__main__':
+        print(get_num())  # 72665192664.0 提交整数 72665192664
+    ```
+
+15. 方格分割
+
+    ```python
+    """
+    6x6的方格，沿着格子的边线剪开成两部分。
+    要求这两部分的形状完全相同。
+    
+    如图：p1.png, p2.png, p3.png 就是可行的分割法。
+    
+    试计算：
+    包括这3种分法在内，一共有多少种不同的分割方法。
+    注意：旋转对称的属于同一种分割法。
+    
+    请提交该整数，不要填写任何多余的内容或说明文字。
+    """
+    
+    
+    def dfs(x, y):
+        global ans
+        if x == 0 or x == n or y == 0 or y == n:
+            ans += 1
+            return
+    
+        for i in range(4):
+            tx = x + directions[i][0]
+            ty = y + directions[i][1]
+            if arr_map[tx][ty] == 0:
+                arr_map[tx][ty] = 1
+                arr_map[n - tx][n - ty] = 1
+                dfs(tx, ty)
+                arr_map[tx][ty] = 0
+                arr_map[n - tx][n - ty] = 0
+    
+        return ans / 4
+    
+    
+    n = 6
+    ans = 0
+    arr_map = [[0] * (n + 1) for i in range(10)]
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    arr_map[3][3] = 1
+    # print(arr_map)
+    
+    if __name__ == '__main__':
+        print(dfs(n // 2, n // 2))  # 509
+        # print(ans)
+    
+    """
+    注释：
+    从中心带你（3，3）开始出发，两边对称走，最后总数要除以4
+    """
+    ```
+
+16. 
+
+17. 
 
