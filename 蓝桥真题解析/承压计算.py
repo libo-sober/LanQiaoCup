@@ -54,7 +54,7 @@ from fnmatch import fnmatchcase as match
 def get_num():
     data = []
     length = 0
-    with open('m', encoding='utf-8') as f:
+    with open('../数据/m', encoding='utf-8') as f:
         for line in f:
             if match(line, '*X*'):
                 length = len(line.split())

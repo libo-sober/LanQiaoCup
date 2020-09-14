@@ -119,7 +119,7 @@ def get_prices(file_name):
 
 
 if __name__ == '__main__':
-    print(get_prices('com_info'))  # 5200
+    print(get_prices('../数据/com_info'))  # 5200
 
 
 """

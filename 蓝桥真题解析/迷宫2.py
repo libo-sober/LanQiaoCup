@@ -103,7 +103,7 @@ data_map = [[0] * 10 for _ in range(10)]  # 这样行
 # data_map = []
 # for i in range(10):
 #     data_map.append([0 for i in range(10)])
-data = get_data('maze2')
+data = get_data('../数据/maze2')
 ans = 0
 
 if __name__ == '__main__':

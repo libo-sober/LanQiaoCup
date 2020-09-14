@@ -261,7 +261,7 @@
        visited = set()
        map_int = []
        queen = []
-       with open('maze', mode='r', encoding='utf-8') as fp:
+       with open('数据/maze', mode='r', encoding='utf-8') as fp:
            data = fp.readlines()
            for line in data:
                map_int.append(list(line.strip()))
@@ -638,7 +638,7 @@
     
     
     if __name__ == '__main__':
-        print(get_prices('com_info'))  # 5200
+        print(get_prices('数据/com_info'))  # 5200
     
     
     """
@@ -833,7 +833,7 @@
     # data_map = []
     # for i in range(10):
     #     data_map.append([0 for i in range(10)])
-    data = get_data('maze2')
+    data = get_data('数据/maze2')
     ans = 0
     
     if __name__ == '__main__':
@@ -900,7 +900,7 @@
     def get_num():
         data = []
         length = 0
-        with open('m', encoding='utf-8') as f:
+        with open('数据/m', encoding='utf-8') as f:
             for line in f:
                 if match(line, '*X*'):
                     length = len(line.split())

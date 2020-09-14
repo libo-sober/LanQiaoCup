@@ -49,7 +49,7 @@ if __name__ == '__main__':
     visited = set()
     map_int = []
     queen = []
-    with open('maze', mode='r', encoding='utf-8') as fp:
+    with open('../数据/maze', mode='r', encoding='utf-8') as fp:
         data = fp.readlines()
         for line in data:
             map_int.append(list(line.strip()))
