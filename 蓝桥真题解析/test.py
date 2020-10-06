@@ -75,5 +75,18 @@
 # data_map[1][0] = 1
 # print(data_map)
 
+# def func(*args):
+#     print(args)
+#     if not args:
+#         return True
+#
+# print(func(*[]))
 
+# flag = [True, True, True]
+#
+# print(all(flag))
+
+a = [0, 1, 3, 5]
+for i in range(3, -1, -1):
+    print(a[i])
 
