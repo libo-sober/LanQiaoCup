@@ -86,7 +86,14 @@
 #
 # print(all(flag))
 
-a = [0, 1, 3, 5]
-for i in range(3, -1, -1):
-    print(a[i])
+# a = [0, 1, 3, 5]
+# for i in range(3, -1, -1):
+#     print(a[i])
+def func(x):
+    global a
+    a += 8
+    c = x + a
+    return c
 
+a = 3
+print(func(3))
