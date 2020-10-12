@@ -67,5 +67,4 @@ l2.sort(key=lambda x: x[1])
 # print(l2)  # [('太白', 18), ('wusir', 35), ('口天吴', 41), ('alex', 73)]
 l2.sort(key=lambda x: x[1], reverse=True)
 print(l2)  # [('alex', 73), ('口天吴', 41), ('wusir', 35), ('太白', 18)]  # 从大到小
-
 """

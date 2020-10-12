@@ -19,9 +19,11 @@
 对于 80% 的评测用例，1≤n≤1000。
 对于所有评测用例，1≤n≤10000。
 """
-
+# import time
+# start = time.time()
 n = int(input())
 num = 0
+# for i in range(1, 10000 + 1):
 for i in range(1, n + 1):
     a = i
     while a != 0:
@@ -31,6 +33,9 @@ for i in range(1, n + 1):
             break
         a = a // 10
 print(num)
+# end = time.time()
+# print(end - start)
 # 10000
 # 41951713
+# 0.004991292953491211s
 # 数据规模不大，直接暴力求解

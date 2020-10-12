@@ -89,11 +89,60 @@
 # a = [0, 1, 3, 5]
 # for i in range(3, -1, -1):
 #     print(a[i])
-def func(x):
-    global a
-    a += 8
-    c = x + a
-    return c
+# def func(x):
+#     global a
+#     a += 8
+#     c = x + a
+#     return c
+#
+# a = 3
+# print(func(3))
+# score = [1,2,3]
+# for i in [1,2,3,4]:
+#     if i == 2:
+#         print(i)
+#         # if i == 3:
+#         #     print(2)
+#         break
+# else:
+#     # for s in score:
+#     #     if s == 0:
+#     #         continue
+#     #     score[score.index(s)] -= 1
+#     print('ss')
+#
+# # print(score)
+# s = set()
+# s1 = set()
+# s.add(1)
+# s1.add(2)
+# r = [s, s1]
+#
+# for i in r:
+#     i.add(9)
+# print(r)
+# import copy
+# # 深copy（）后得到的对象改变后不会改变原来对象的内容
+# s = set()
+# for i in range(4):
+#     s.add(i)
+# print(s)
+# a = copy.deepcopy(s)
+# a.add(8)
+# print(a)
+# print(s)
+# lst = [i for i in range(10)]
+# print(sum(lst[3:]))
+# print(sum(lst[3:-1]))
+import re
+k = 20
+ans = 0
+pattern = '\WAlice\W|\WBob\W'
+s = 'This is a story about Alice and Bob. Alice wants to send a private message to Bob.'
 
-a = 3
-print(func(3))
+
+
+
+
+
+

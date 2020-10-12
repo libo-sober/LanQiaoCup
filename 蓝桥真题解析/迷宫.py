@@ -18,6 +18,7 @@
 
 
 class Node(object):
+    """(x, y)位置 c路径记录"""
     def __init__(self, x, y, c):
         self.x = x
         self.y = y
@@ -52,12 +53,14 @@ if __name__ == '__main__':
     with open('../数据/maze', mode='r', encoding='utf-8') as fp:
         data = fp.readlines()
         for line in data:
+            """数据提取到列表"""
             map_int.append(list(line.strip()))
         m = len(map_int)
         n = len(map_int[0])
         node = Node(0, 0, '')
         queen.append(node)
         while len(queen) != 0:
+            """队列不空时循环"""
             move_node = queen[0]
             queen.pop(0)
             move_str = str(move_node.x) + ' ' + str(move_node.y)
@@ -65,7 +68,7 @@ if __name__ == '__main__':
                 visited.add(move_str)
                 if move_node.x == m - 1 and move_node.y == n - 1:
                     print(move_node)
-                    print(len(move_node.__str__()))
+                    # print(len(move_node.__str__()))
                     break
                 if move_node.x < m - 1 and map_int[move_node.x + 1][move_node.y] == '0':
                     queen.append(down(move_node))
@@ -77,6 +80,7 @@ if __name__ == '__main__':
                     queen.append(up(move_node))
 
 """
+DDDDRRURRRRRRDRRRRDDDLDDRDDDDDDDDDDDDRDDRRRURRUURRDDDDRDRRRRRRDRRURRDDDRRRRUURUUUUUUULULLUUUURRRRUULLLUUUULLUUULUURRURRURURRRDDRRRRRDDRRDDLLLDDRRDDRDDLDDDLLDDLLLDLDDDLDDRRRRRRRRRDDDDDDRR
 广度搜索，最先到满足结束条件的肯定是最短的那一个路径.
 """
 
