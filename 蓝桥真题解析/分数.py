@@ -14,25 +14,45 @@
 """
 
 
+# def gcd(a, b):
+#     while a % b != 0:
+#         c = a % b
+#         a = b
+#         b = c
+#     return c
+#
+#
+# def get_num(n):
+#     fenzi = 0
+#     fenmu = 2 ** (n - 1)
+#     for i in range(n):
+#         fenzi += 2 ** i
+#     mcf = gcd(fenmu, fenzi)
+#
+#     return f'{fenzi // mcf}/{fenmu // mcf}'
+#
+#
+# if __name__ == '__main__':
+#     print(get_num(20))  # 1048575/524288
+#     # print(gcd(20, 35))  # 5
+
+# 快速幂运算 这里只考虑正数次幂
+def power(base, exp):
+    res = 1
+    while exp > 0:
+        if exp & 1:  # 按位与 10的二进制  1010
+            res *= base
+        exp >>= 1  # 右移1位
+        base *= base
+    return res
+
+# 最大公约数
 def gcd(a, b):
-    while a % b != 0:
-        c = a % b
-        a = b
-        b = c
-    return c
+    if b == 0:
+        return a
+    return gcd(b, a%b)
 
-
-def get_num(n):
-    fenzi = 0
-    fenmu = 2 ** (n - 1)
-    for i in range(n):
-        fenzi += 2 ** i
-    mcf = gcd(fenmu, fenzi)
-
-    return f'{fenzi // mcf}/{fenmu // mcf}'
-
-
-if __name__ == '__main__':
-    print(get_num(20))  # 1048575/524288
-    # print(gcd(20, 35))  # 5
-
+a = power(2, 20)-1
+b = power(2, 19)
+c = gcd(a, b)
+print(a//c, '/', b//c)

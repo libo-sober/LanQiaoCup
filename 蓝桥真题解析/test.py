@@ -134,11 +134,9 @@
 # lst = [i for i in range(10)]
 # print(sum(lst[3:]))
 # print(sum(lst[3:-1]))
-import re
-k = 20
-ans = 0
-pattern = '\WAlice\W|\WBob\W'
-s = 'This is a story about Alice and Bob. Alice wants to send a private message to Bob.'
+line = '1 2 3 4 50'
+line = line.split()
+print(line)
 
 
 
